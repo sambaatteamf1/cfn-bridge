@@ -13,6 +13,7 @@ module CloudFormation
         REQUIRED_FIELDS = [
           ELASTI_CACHE::REPLICATION_GROUP_ID,
           ELASTI_CACHE::REPLICA_CLUSTER_ID,
+          ELASTI_CACHE::REPLICA_CLUSTER_AVAILABILITY_ZONE,
         ]
 
         def create(request)
@@ -20,8 +21,8 @@ module CloudFormation
 
           cluster_id = request.resource_properties[ELASTI_CACHE::REPLICA_CLUSTER_ID]
           replication_id = request.resource_properties[ELASTI_CACHE::REPLICATION_GROUP_ID]
-
-          client.create_cache_cluster(cache_cluster_id: cluster_id, replication_group_id: replication_id)
+          availability_zone = request.resource_properties[ELASTI_CACHE::REPLICA_CLUSTER_AVAILABILITY_ZONE]
+          client.create_cache_cluster(cache_cluster_id: cluster_id, replication_group_id: replication_id, preferred_availability_zone: availability_zone)
 
           wait_until_cluster_is_available(cluster_id)
 

@@ -33,6 +33,7 @@ module CloudFormation
         AVAILABLE = 'available'
         CLUSTER_ID = 'ClusterId'
         REPLICA_CLUSTER_ID = 'ReplicaClusterId'
+        REPLICA_CLUSTER_AVAILABILITY_ZONE = 'ReplicaClusterAvailabilityZone'
         DESCRIPTION = 'Description'
         NODE_URLS = 'NodeURLs'
         REPLICA = 'replica'
